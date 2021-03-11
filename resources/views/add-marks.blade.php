@@ -4,21 +4,25 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(session()->has('message'))
+            <div class="alert alert-success">
+            {{ session()->get('message') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">Add Marks</div>
-
-
                 <div class="card-body">
                     <form method="POST" action="@if(isset($markDetails)) {{ route('update-marks') }} @else {{ route('store-marks') }} @endif">
                         @csrf
                         @if(isset($markDetails))
                             <input type="hidden" class="form-control" name="mark_id" value="{{$markDetails->id}}">
                         @endif
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Student:</label>
                             <div class="col-md-6">
                                 <select class="form-select" aria-label="Default select example" name="student_id">
-                                    <option selected>Select student</option>
+                                    <option>Select student</option>
                                     @if(isset($studentLists))
                                         @foreach($studentLists as $studentList)
                                             <option value="{{$studentList->id}}" @if(isset($markDetails->student_id)) @if($markDetails->student_id == $studentList->id) selected @endif @endif>{{$studentList->name}}</option>
@@ -81,7 +85,7 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            @if(isset($students))
+                            @if(count($students) > 0)
                                 @foreach($students as $student)
                                 <tr>
                                     @php 
@@ -111,7 +115,7 @@
                                 @endforeach
                             @else
                             <tr>
-                                <td colspan="6">No data found</td>
+                                <td colspan="10">No data found</td>
                             </tr>
                             @endif
                         </tbody>

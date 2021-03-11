@@ -95,11 +95,12 @@ class HomeController extends Controller
 
     public function editMarks(Request $request)
     {
+        $studentLists = Student::all();
         $students = Student::join('marks', 'marks.student_id', 'students.id')
                     ->select('students.id', 'marks.term', 'marks.maths', 'marks.science', 'marks.history', 'students.name', 'marks.id as mark_id', 'marks.created_at', 'marks.updated_at')
                     ->get();
         $markDetails = Mark::find($request->id);
-        return view('add-marks', compact('students', 'markDetails'));
+        return view('add-marks', compact('students', 'markDetails', 'studentLists'));
     }
 
     public function updateMarks(Request $request)
