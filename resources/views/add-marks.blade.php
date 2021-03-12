@@ -21,8 +21,8 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Student:</label>
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example" name="student_id">
-                                    <option>Select student</option>
+                                <select class="form-select" aria-label="Default select example" name="student_id" required="">
+                                    <option value="">Select student</option>
                                     @if(isset($studentLists))
                                         @foreach($studentLists as $studentList)
                                             <option value="{{$studentList->id}}" @if(isset($markDetails->student_id)) @if($markDetails->student_id == $studentList->id) selected @endif @endif>{{$studentList->name}}</option>
@@ -34,8 +34,8 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Term:</label>
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example" name="term">
-                                    <option selected>Select term</option>
+                                <select class="form-select" aria-label="Default select example" name="term" required="">
+                                    <option value="">Select term</option>
                                     <option value="1" @if(isset($markDetails->term)) @if($markDetails->term == 1) selected @endif @endif>Term One</option>
                                     <option value="2" @if(isset($markDetails->term)) @if($markDetails->term == 2) selected @endif @endif>Term Two</option>
                                 </select>

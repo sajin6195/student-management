@@ -35,13 +35,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">Gender:</label>
                             <div class="col-md-6">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="1" @if(isset($studentsDetails->gender)) @if($studentsDetails->gender == 1) checked @endif @endif>
+                                    <input class="form-check-input" type="radio" required="" name="gender" value="1" @if(isset($studentsDetails->gender)) @if($studentsDetails->gender == 1) checked @endif @endif>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                     Male
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="2" @if(isset($studentsDetails->gender)) @if($studentsDetails->gender == 2) checked @endif @endif>
+                                    <input class="form-check-input" type="radio" required="" name="gender" value="2" @if(isset($studentsDetails->gender)) @if($studentsDetails->gender == 2) checked @endif @endif>
                                     <label class="form-check-label" for="flexRadioDefault2">
                                     Female
                                     </label>
@@ -51,8 +51,8 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Reporting Teacher:</label>
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example" name="teacher_id">
-                                    <option selected>Select teacher</option>
+                                <select class="form-select" aria-label="Default select example" name="teacher_id" required="">
+                                    <option value="">Select teacher</option>
                                     @if(isset($teachers))
                                         @foreach($teachers as $teacher)
                                             <option value="{{$teacher->id}}" @if(isset($studentsDetails->teacher_id)) @if($studentsDetails->teacher_id == $teacher->id) selected @endif @endif>{{$teacher->name}}</option>
