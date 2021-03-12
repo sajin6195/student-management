@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">Add Marks</div>
                 <div class="card-body">
-                    <form method="POST" action="@if(isset($markDetails)) {{ route('update-marks') }} @else {{ route('store-marks') }} @endif">
+                    <form method="POST" action="@if(isset($markDetails)) {{ route('update-marks') }} @else {{ route('store-marks') }} @endif" data-parsley-validate>
                         @csrf
                         @if(isset($markDetails))
                             <input type="hidden" class="form-control" name="mark_id" value="{{$markDetails->id}}">
@@ -21,7 +21,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Student:</label>
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example" name="student_id" required="">
+                                <select class="form-select" aria-label="Default select example" name="student_id" required="" data-parsley-required-message="Please select student">
                                     <option value="">Select student</option>
                                     @if(isset($studentLists))
                                         @foreach($studentLists as $studentList)
@@ -34,7 +34,7 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Term:</label>
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example" name="term" required="">
+                                <select class="form-select" aria-label="Default select example" name="term" required="" data-parsley-required-message="Please select term">
                                     <option value="">Select term</option>
                                     <option value="1" @if(isset($markDetails->term)) @if($markDetails->term == 1) selected @endif @endif>Term One</option>
                                     <option value="2" @if(isset($markDetails->term)) @if($markDetails->term == 2) selected @endif @endif>Term Two</option>
@@ -44,19 +44,19 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Maths:</label>
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="maths" required @if(isset($markDetails->maths)) value="{{$markDetails->maths}}" @endif>
+                                <input type="number" class="form-control" name="maths" required @if(isset($markDetails->maths)) value="{{$markDetails->maths}}" @endif data-parsley-required-message="Please enter marks">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Science:</label>
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="science" required @if(isset($markDetails->science)) value="{{$markDetails->science}}" @endif>
+                                <input type="number" class="form-control" name="science" required @if(isset($markDetails->science)) value="{{$markDetails->science}}" @endif data-parsley-required-message="Please enter marks">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">History:</label>
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="history" required @if(isset($markDetails->history)) value="{{$markDetails->history}}" @endif>
+                                <input type="number" class="form-control" name="history" required @if(isset($markDetails->history)) value="{{$markDetails->history}}" @endif data-parsley-required-message="Please enter marks">
                             </div>
                         </div>
                        
